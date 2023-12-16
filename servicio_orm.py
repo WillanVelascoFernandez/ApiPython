@@ -73,7 +73,6 @@ with app.app_context():
         {'fecha': '2023-01-03', 'nombreLoteria': 'Loteria1', 'numeros': '9,8,5,8,6'},
         {'fecha': '2023-01-03', 'nombreLoteria': 'Loteria2', 'numeros': '0,9,8,2,0'},
         {'fecha': '2023-01-03', 'nombreLoteria': 'Loteria3', 'numeros': '5,0,7,9,2'},
-        #
     ]
 
     for loteria_data in loterias_bolivia:
