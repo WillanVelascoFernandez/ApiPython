@@ -55,6 +55,32 @@ class ListarLoteriaPorNombre(Resource):
 with app.app_context():
     db.create_all()
 
+    # Agrega algunos datos de ejemplo
+    # loteria1 = ModeloLoteria(fecha='2023-01-01', nombreLoteria='Loteria1', numeros='1,2,3,4,5')
+    # loteria2 = ModeloLoteria(fecha='2023-01-02', nombreLoteria='Loteria2', numeros='6,7,8,9,10')
+    # db.session.add(loteria1)
+    # db.session.add(loteria2)
+    # db.session.commit()
+
+        # Agrega 20 loterías de Bolivia como datos de ejemplo
+    loterias_bolivia = [
+        {'fecha': '2023-01-01', 'nombreLoteria': 'Loteria1', 'numeros': '1,2,5,5,9'},
+        {'fecha': '2023-01-01', 'nombreLoteria': 'Loteria2', 'numeros': '6,2,9,3,1'},
+        {'fecha': '2023-01-01', 'nombreLoteria': 'Loteria3', 'numeros': '7,3,7,2,3'},
+        {'fecha': '2023-01-02', 'nombreLoteria': 'Loteria1', 'numeros': '6,5,3,7,4'},
+        {'fecha': '2023-01-02', 'nombreLoteria': 'Loteria2', 'numeros': '8,7,1,9,9'},
+        {'fecha': '2023-01-02', 'nombreLoteria': 'Loteria3', 'numeros': '6,2,2,4,0'},
+        {'fecha': '2023-01-03', 'nombreLoteria': 'Loteria1', 'numeros': '9,8,5,8,6'},
+        {'fecha': '2023-01-03', 'nombreLoteria': 'Loteria2', 'numeros': '0,9,8,2,0'},
+        {'fecha': '2023-01-03', 'nombreLoteria': 'Loteria3', 'numeros': '5,0,7,9,2'},
+        #
+    ]
+
+    for loteria_data in loterias_bolivia:
+        nueva_loteria = ModeloLoteria(**loteria_data)
+        db.session.add(nueva_loteria)
+        db.session.commit()
+
 api.add_resource(ListarLoteria, '/')
 api.add_resource(ListarLoteriaPorNombre, '/nombre/<string:nombreLoteria>')
 

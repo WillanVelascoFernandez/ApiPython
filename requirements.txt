@@ -1,0 +1,21 @@
+aniso8601==9.0.1
+blinker==1.7.0
+click @ file:///C:/b/abs_f9ihnt72pu/croot/click_1698129847492/work
+colorama @ file:///C:/b/abs_a9ozq0l032/croot/colorama_1672387194846/work
+Flask==3.0.0
+Flask-RESTful==0.3.10
+Flask-SQLAlchemy==3.1.1
+greenlet==3.0.2
+importlib-metadata @ file:///C:/b/abs_20ndzb2j6v/croot/importlib-metadata_1678997085534/work
+itsdangerous==2.1.2
+Jinja2 @ file:///C:/b/abs_7cdis66kl9/croot/jinja2_1666908141852/work
+MarkupSafe @ file:///C:/ci/markupsafe_1654508077284/work
+mysql-connector-python==8.2.0
+mysqlclient==2.2.1
+protobuf==4.21.12
+pytz==2023.3.post1
+six==1.16.0
+SQLAlchemy==2.0.23
+typing_extensions==4.9.0
+Werkzeug==3.0.1
+zipp @ file:///C:/b/abs_b9jfdr908q/croot/zipp_1672387552360/work
