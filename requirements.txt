@@ -1,3 +1,4 @@
+# Se utilizo Conda con la version de python 3.9.6
 aniso8601==9.0.1
 blinker==1.7.0
 click @ file:///C:/b/abs_f9ihnt72pu/croot/click_1698129847492/work
