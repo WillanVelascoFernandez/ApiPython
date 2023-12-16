@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Loterías</title> 
+ <link rel="stylesheet" type="text/css" href="styles.css"> 
+ 
+ <style> 
+ 
+.lottery { 
+    background-color: #f2f2f2; 
+    border-radius: 5px; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 10px;     
+} 
+ 
+.lottery h2 { 
+    margin-bottom: 10px; 
+} 
+ 
+.numbers { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+} 
+ 
+.number { 
+    width: 40px; 
+    height: 40px; 
+    background-color: #F7D488; /* Darker background color */ 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 14px; /* Smaller font size */ 
+    margin: 10px; /* Increased margin for more space between rectangles */ 
+    color: white; /* Text color */ 
+} 
+ 
+body { 
+ margin: 0; 
+ padding: 0; 
+ box-sizing: border-box; 
+} 
+ 
+header { 
+ background-color: #F9A03F; 
+ padding: 20px; 
+ display: flex; 
+ justify-content: space-between; 
+ align-items: center; 
+} 
+ 
+.logo { 
+ color: white; 
+ font-size: 24px; 
+} 
+ 
+nav ul { 
+ list-style-type: none; 
+ padding: 0; 
+} 
+ 
+nav ul li { 
+ display: inline; 
+ margin-right: 10px; 
+} 
+ 
+nav ul li a { 
+ color: white; 
+ text-decoration: none; 
+} 
+ 
+main { 
+ padding: 20px; 
+} 
+ 
+footer { 
+ background-color: #F9A03F; 
+ padding: 20px; 
+ text-align: center; 
+} 
+ 
+.copyright { 
+ color: white; 
+ font-size: 14px; 
+} 
+ </style> 
+</head> 
+<body> 
+ <header> 
+    <div class="logo">GanAPIs</div> 
+    <nav> 
+      <ul> 
+        <li><a href="#">Información</a></li> 
+        <li><a href="#">Loterías</a></li> 
+      </ul> 
+    </nav> 
+ </header> 
+ 
+ <main> 
+    <div class="lottery"> 
+        <h2>Lotería 1</h2> 
+        <ul class="numbers"> 
+            <li class="number">1</li> 
+            <li class="number">2</li> 
+            <li class="number">3</li> 
+            <!-- Agrega más números aquí --> 
+        </ul> 
+    </div> 
+ 
+    <div class="lottery"> 
+        <h2>Lotería 2</h2> 
+        <ul class="numbers"> 
+            <li class="number">4</li> 
+            <li class="number">5</li> 
+            <li class="number">6</li> 
+            <!-- Agrega más números aquí --> 
+        </ul> 
+    </div> 
+ 
+    <div class="lottery"> 
+        <h2>Lotería 3</h2> 
+        <ul class="numbers"> 
+            <li class="number">7</li> 
+            <li class="number">8</li> 
+            <li class="number">9</li> 
+            <!-- Agrega más números aquí --> 
+        </ul> 
+    </div> 
+ 
+    <div class="lottery"> 
+        <h2>Lotería 4</h2> 
+        <ul class="numbers"> 
+            <li class="number">10</li> 
+            <li class="number">11</li> 
+            <li class="number">12</li> 
+            <!-- Agrega más números aquí --> 
+        </ul> 
+    </div> 
+ </main> 
+ 
+ <footer> 
+    <p class="copyright">&copy; 2022 Your Company Name</p> 
+ </footer> 
+</body> 
+</html>
