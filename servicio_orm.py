@@ -1,5 +1,8 @@
+import webbrowser
 from flask import Flask, jsonify
+import flask
 from flask_restful import Resource, Api, request
+import flask_restful
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask("Practica APIs Python")
@@ -80,8 +83,8 @@ with app.app_context():
         db.session.add(nueva_loteria)
         db.session.commit()
 
-api.add_resource(ListarLoteria, '/')
-api.add_resource(ListarLoteriaPorNombre, '/nombre/<string:nombreLoteria>')
+api.add_resource(ListarLoteria, '/api')
+api.add_resource(ListarLoteriaPorNombre, '/api/nombre/<string:nombreLoteria>')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='172.25.112.1', port=5055,debug=True)
