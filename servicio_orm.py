@@ -1,12 +1,23 @@
+
+"""Importamos librerias"""
 from flask import Flask, jsonify
 from flask_restful import Resource, Api, request
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy #ORM para las bases de datos
 
-app = Flask("LottoApi")
+
+"""Framework para hacer Apis -> Flask"""
+app = Flask("LottoApi") #
+
+"""Configuramos el jdrb para poder usar una bd específica"""
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb://root:1234@localhost:3306/api'
-db = SQLAlchemy(app)
-api = Api(app)
 
+"""Inicializa el framework con la ORM"""
+db = SQLAlchemy(app)
+
+"""Inicializamos la Api"""
+api = Api(app) 
+
+"""Modelo para crear la tabla en la bd"""
 class ModeloLoteria(db.Model):
     __tablename__ = 'lottoapi'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -21,8 +32,9 @@ class ModeloLoteria(db.Model):
     def __repr__(self):
         return f'Historial: id={self.id}, fecha={self.fecha}, proveedor={self.proveedor},, nombreLoteria={self.nombreLoteria}, numeros={self.numeros}'
 
-class ListarLoteria(Resource):
-    def get(self):
+class ListarLoteria(Resource): 
+    """Clases para recibir y mandar las solicitudes http de la api"""
+    def get(self): #Envía
         # items = ModeloLoteria.query.filter(ModeloLoteria.id == 1).first()
         items = ModeloLoteria.query.all()
         if items:
@@ -43,6 +55,7 @@ class ListarLoteria(Resource):
     #         return {"error": str(e)}, 400
         
 class ListarLoteriaPorNombre(Resource):
+    """Lista por el nombre de lotería Ej: Semanal, Diaria, Nacional,etc"""
     def get(self, nombreLoteria=None):
         # items = ModeloLoteria.query.filter(ModeloLoteria.id == 1).first()
         items = ModeloLoteria.query.filter(ModeloLoteria.nombreLoteria==nombreLoteria)
@@ -54,6 +67,7 @@ class ListarLoteriaPorNombre(Resource):
             return {"message": "No se encontró el elemento"}, 404
         
 class ListarLoteriaPorProveedor(Resource):
+    """"Lista loterías por el nombre proveedor Ej: Banco o Loteria"""
     def get(self, proveedor=None):
         # items = ModeloLoteria.query.filter(ModeloLoteria.id == 1).first()
         items = ModeloLoteria.query.filter(ModeloLoteria.proveedor==proveedor)
@@ -64,7 +78,9 @@ class ListarLoteriaPorProveedor(Resource):
         else:
             return {"message": "No se encontró el elemento"}, 404
 
+""""Cuando se inicializa la app, se ejecuta este apartado para crear la tabla si es que no existe y añadir datos a la tabla"""
 with app.app_context():
+    """"Creamos la tabla"""
     db.create_all()
 
     # Agrega algunos datos de ejemplo
@@ -74,7 +90,7 @@ with app.app_context():
     # db.session.add(loteria2)
     # db.session.commit()
 
-        # Agrega loterías de Bolivia como datos de ejemplo
+    """Agrega datos a un arreglo para luego introducirlo en la tabla"""
     loterias_bolivia = [
         {'fecha': '2023-01-01', 'proveedor': 'Banco', 'nombreLoteria': 'Macro Cuenta', 'numeros': '1,2,5,5,9'},
         {'fecha': '2023-01-01', 'proveedor': 'Loteria', 'nombreLoteria': 'Nacional', 'numeros': '6,2,9,3,1'},
@@ -85,14 +101,17 @@ with app.app_context():
         {'fecha': '2023-01-03', 'proveedor': 'Loteria', 'nombreLoteria': 'Diaria', 'numeros': '0,9,8,2,0'},
     ]
 
+    """Recorre el arreglo de loterias en Bolivia para añadir los datos a la tabla"""
     for loteria_data in loterias_bolivia:
         nueva_loteria = ModeloLoteria(**loteria_data)
         db.session.add(nueva_loteria)
         db.session.commit()
 
+"""Rutas de la api para llamar a los recursos"""
 api.add_resource(ListarLoteria, '/api')
 api.add_resource(ListarLoteriaPorNombre, '/api/nombre/<string:nombreLoteria>')
 api.add_resource(ListarLoteriaPorProveedor, '/api/proveedor/<string:proveedor>')
 
+""""Si este archivo es el que se ejecuta, entrará al if"""
 if __name__ == "__main__":
     app.run(host='172.25.112.1', port=5055,debug=True)
